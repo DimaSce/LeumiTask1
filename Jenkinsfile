@@ -28,8 +28,8 @@ pipeline {
                 sh "ls"
                 dir('eks/') {
                     sh "ls"
-                    sh "kubectl apply -f dep.yml"
-                    sh "kubectl apply -f service.yml"
+                    sh "/home/ubuntu/bin/kubectl apply -f apply -f dep.yml"
+                    sh "/home/ubuntu/bin/kubectl apply -f service.yml"
     }
             }
         }
