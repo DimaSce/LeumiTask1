@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('build') {
             agent { label 'agent1' }
@@ -21,5 +21,16 @@ pipeline {
             sh "docker push 022569946651.dkr.ecr.us-east-1.amazonaws.com/project:latest"
     }
     }
+        
+           stage('build2') {
+            agent { label 'agent2' }
+            steps {
+                sh "ls"
+                dir('project/') {
+                    sh "ls"
+                    sh "curl ifconfig.me"
+    }
+            }
+        }
 }
 }
