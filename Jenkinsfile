@@ -7,7 +7,7 @@ pipeline {
                 dir('project/') {
                     sh "ls"
                     script{
-                 app = docker.build("project")
+                 app = sudo docker.build("project")
                 }
     }
             }
