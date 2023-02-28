@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "pwd"
-                dir('your-sub-directory') {
+                sh "ls"
+                dir('project/') {
                     sh "ls"
     }
             }
