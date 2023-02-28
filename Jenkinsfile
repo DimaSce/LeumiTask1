@@ -6,9 +6,6 @@ pipeline {
                 sh "ls"
                 dir('project/') {
                     sh "ls"
-                    script{
-                 app = sudo docker.build("project")
-                }
     }
             }
         }
@@ -18,7 +15,7 @@ pipeline {
                 script{
                         docker.withRegistry('https://022569946651.dkr.ecr.us-east-1.amazonaws.com/project', 'ecr:us-east-2:aws-credentials') {
                     
-                    app.push("latest")
+                    docker.image("project").push("latest")
                     }
                 }
             }
