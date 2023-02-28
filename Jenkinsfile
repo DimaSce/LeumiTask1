@@ -26,9 +26,10 @@ pipeline {
             agent { label 'agent2' }
             steps {
                 sh "ls"
-                dir('project/') {
+                dir('eks/') {
                     sh "ls"
-                    sh "curl ifconfig.me"
+                    sh "kubectl apply -f dep.yml"
+                    sh "kubectl apply -f service.yml"
     }
             }
         }
