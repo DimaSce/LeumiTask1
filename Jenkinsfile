@@ -6,6 +6,7 @@ pipeline {
                 sh "ls"
                 dir('project/') {
                     sh "ls"
+                    sh "sudo docker build ."
     }
             }
         }
