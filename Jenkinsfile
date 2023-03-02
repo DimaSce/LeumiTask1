@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('build') {
+        stage('build image') {
             agent { label 'agent1' }
             steps {
                 sh "ls"
@@ -11,7 +11,7 @@ pipeline {
                     }
                 }
             }       
-        stage('Deploy') {
+        stage('Push image to ECR') {
             agent { label 'agent1' }
             steps {
                 sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 022569946651.dkr.ecr.us-east-1.amazonaws.com"
@@ -19,15 +19,16 @@ pipeline {
                 sh "docker push 022569946651.dkr.ecr.us-east-1.amazonaws.com/project:latest"
             }
     }
-           stage('build2') {
+        stage('Deploy on EKS') {
             agent { label 'agent2' }
             steps {
                 sh "ls"
-                dir('project/') {
+                dir('eks/') {
                     sh "ls"
-                    sh "curl ifconfig.me"
-                }   
-             }
+                    sh "/home/ubuntu/bin/kubectl apply -f  dep.yml"
+                    sh "/home/ubuntu/bin/kubectl apply -f service.yml"
+    }
+            }
         }
     }
 }
