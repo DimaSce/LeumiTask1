@@ -23,6 +23,7 @@ pipeline {
                 dir('eks/') {
                     sh "/home/ubuntu/bin/kubectl apply -f  pod.yml"
                     sh "/home/ubuntu/bin/kubectl apply -f service.yml"
+                    sh "kubectl describe service pod-service"
     }
             }
         }
