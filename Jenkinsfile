@@ -21,7 +21,7 @@ pipeline {
             agent { label 'agent2' }
             steps {
                 dir('eks/') {
-                    sh "/home/ubuntu/bin/kubectl apply -f  dep.yml"
+                    sh "/home/ubuntu/bin/kubectl apply -f  pod.yml"
                     sh "/home/ubuntu/bin/kubectl apply -f service.yml"
     }
             }
