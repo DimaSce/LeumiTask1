@@ -9,7 +9,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app)
 api = Api(
     app,
     version="1.2",
-    title="Calculator API2.0",
+    title="Calculator API 3.0",
     description="A simple calculator API that performs basic mathematical operations",
 )
 
