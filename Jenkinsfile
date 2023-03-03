@@ -4,9 +4,7 @@ pipeline {
         stage('build image') {
             agent { label 'agent1' }
             steps {
-                sh "ls"
                 dir('project/') {
-                    sh "ls"
                     sh "sudo docker build -t project ."
                     }
                 }
@@ -22,9 +20,7 @@ pipeline {
         stage('Deploy on EKS') {
             agent { label 'agent2' }
             steps {
-                sh "ls"
                 dir('eks/') {
-                    sh "ls"
                     sh "/home/ubuntu/bin/kubectl apply -f  dep.yml"
                     sh "/home/ubuntu/bin/kubectl apply -f service.yml"
     }
